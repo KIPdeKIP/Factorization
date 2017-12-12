@@ -109,12 +109,17 @@ public class ASMTransformer implements IClassTransformer {
             }
             // Sigh. :/ needed to keep minimap mods happy...
             if (transformedName.equals("net.minecraft.client.multiplayer.WorldClient") && HammerEnabled.ENABLED) {
-                return applyTransform(basicClass,
-                        new AbstractAsmMethodTransform.MutateCall(name, transformedName, "<init>", "<init>")
-                                .setOwner("cpw.mods.fml.common.eventhandler.EventBus")
-                                .setName("post", "post", "post")
-                                .setDescr("(Lcpw/mods/fml/common/eventhandler/Event;)Z", "(Lcpw/mods/fml/common/eventhandler/Event;)Z")
-                );
+                try {
+                    return applyTransform(basicClass,
+                            new AbstractAsmMethodTransform.MutateCall(name, transformedName, "<init>", "<init>")
+                                    .setOwner("cpw.mods.fml.common.eventhandler.EventBus")
+                                    .setName("post", "post", "post")
+                                    .setDescr("(Lcpw/mods/fml/common/eventhandler/Event;)Z", "(Lcpw/mods/fml/common/eventhandler/Event;)Z")
+                    );
+                } catch (RuntimeException e) {
+                    log("WARNING: Transformation to " + transformedName + " failed!");
+                    e.printStackTrace();
+                }
             }
         }
         {
