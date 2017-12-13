@@ -7,3 +7,6 @@
 [submodule "apis/railcraft"]
 	path = apis/railcraft
 	url = git@github.com:ModdingMinecraft/Railcraft-API.git
+[submodule "src/main/java/codechicken"]
+	path = src/main/java/codechicken
+	url = git@github.com:ModdingMinecraft/CodeChickenLib.git
