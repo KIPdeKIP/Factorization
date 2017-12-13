@@ -4,3 +4,6 @@
 [submodule "src/main/resources/assets/factorization/lang"]
 	path = src/main/resources/assets/factorization/lang
 	url = git@github.com:ModdingMinecraft/FactorizationLocalizations.git
+[submodule "apis/railcraft"]
+	path = apis/railcraft
+	url = git@github.com:ModdingMinecraft/Railcraft-API.git
